@@ -1,0 +1,66 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Source your .vimrc
+source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+
+"" =================================================================
+" 基础设置 (General Settings)
+" =================================================================
+let mapleader=" "      " 设置空格为 Leader 键，现代 Vim 配置的核心
+set number             " 显示行号
+set relativenumber    " 开启相对行号 (混合模式)
+set scrolloff=5        " 光标上下始终保留 5 行，视野更广
+set history=500        " 历史记录条数
+set clipboard+=unnamed " 与系统剪贴板共享 (极其重要，方便代码拷贝到浏览器)
+set showmode           " 显示当前模式
+set visualbell         " 禁用讨厌的蜂鸣声
+
+" 搜索优化
+set hlsearch           " 高亮搜索结果
+set incsearch          " 输入时即实时跳转
+set ignorecase         " 搜索时忽略大小写
+set smartcase          " 如果输入包含大写，则不忽略大小写 text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" =================================================================
+" 快捷键映射 (Key Mappings)
+" =================================================================
+
+" 将 Ctrl + [ 映射为 Esc (涵盖插入模式、命令模式和可视模式)
+inoremap <C-[> <Esc>
+vnoremap <C-[> <Esc>
+nnoremap <C-[> <Esc>
+
+nnoremap L :action NextTab<CR>
+nnoremap H :action PreviousTab<CR>
+
+nnoremap <leader>bd :action CloseContent<CR>
+nnoremap <leader>br :action CloseAllToTheRight<CR>
+nnoremap <leader>bo :action CloseAllEditorsButActive<CR>
+
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gr :action FindUsages<CR>
+
+nnoremap <leader>cr :action RenameElement<CR>
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
